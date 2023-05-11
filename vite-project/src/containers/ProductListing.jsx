@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
+import { setProducts } from '../redux/actions/productActions'
 import ProductComponent from './ProductComponent'
 
 const ProductListing = () => {
@@ -13,12 +14,13 @@ const ProductListing = () => {
       .catch((err) => {
         console.log(err)
       })
-    console.log(response.data)
+    dispatch(setProducts(response.data))
   }
 
   useEffect(() => {
     fetchProducts()
   }, [])
+  console.log(products)
 
   console.log(products)
   return (
